@@ -1,0 +1,32 @@
+{
+  "name": "@fastly/compute-testing",
+  "version": "0.1.0",
+  "scripts": {
+    "prepack": "npm run clean && npm run build",
+    "build": "tsc --build tsconfig.json",
+    "clean": "rimraf build"
+  },
+  "main": "./build/src/index.js",
+  "types": "./build/src/index.d.ts",
+  "dependencies": {
+    "tree-kill": "^1.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.3",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.1.6"
+  },
+  "type": "module",
+  "files": [
+    "build/src/**/*.js",
+    "build/src/**/*.js.map",
+    "build/src/**/*.d.ts",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fastly/js-compute-testing.git"
+  }
+}
