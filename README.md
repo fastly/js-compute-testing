@@ -45,14 +45,14 @@ import { ComputeApplication } from '@fastly/compute-testing';
 
 describe('Run local Viceroy', function() {
 
-  // A variable to represent the app running in the local development environment
-  let app;
+  // Represents the app running in the local development environment
+  const app = new ComputeApplication();
 
   before(async function() {
     // We need a few seconds to wait for local development environment to start
     this.timeout(30000);
     // Start the app
-    app = await ComputeApplication.start({
+    await app.start({
       // Set 'appRoot' to the directory in which to start the app.  This is usually
       // the directory that contains the 'fastly.toml' file.
       appRoot: '/path/to/approot',
@@ -74,7 +74,6 @@ describe('Run local Viceroy', function() {
     this.timeout(10000);
     // Shut down the app
     await app.shutdown();
-    app = null;
   });
 
 });
@@ -117,11 +116,11 @@ import { ComputeApplication } from '@fastly/compute-testing';
 
 describe('Run custom app', function() {
 
-  let app;
+  const app = new ComputeApplication();
 
   before(async function() {
     this.timeout(30000);
-    app = await ComputeApplication.start({
+    await app.start({
       // Set 'startCommand' to the command that starts your server.
       startCommand: 'npm run start',
       // Set 'appRoot' to the directory in which to run 'startCommand'.
@@ -148,10 +147,10 @@ import { ComputeApplication } from '@fastly/compute-testing';
 
 describe('Use running application', function() {
 
-  let app;
+  const app = new ComputeApplication();
 
   before(async function() {
-    app = await ComputeApplication.start({
+    await app.start({
       // Set 'addr' to the hostname and port of the running application.
       // Defaults to 'http://127.0.0.1:7676/'.
       addr: 'https://app.example.com/',
