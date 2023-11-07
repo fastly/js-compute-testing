@@ -3,6 +3,10 @@
 For those times you want to write JavaScript tests against a Fastly
 Compute application.
 
+> NOTE: Your Compute application can be written in any language/framework.
+> This library allows you to write end-to-end tests against the
+> output of your Compute application.
+
 Start and stop a Fastly Compute application in the
 [local testing environment](https://developer.fastly.com/learning/compute/testing/#running-a-local-testing-server)
 from your tests and make requests to it.
@@ -62,8 +66,22 @@ describe('Run local Viceroy', function() {
     });
   });
 
-  it('Response body contains <div>Index</div>', async function() {
+  it('Response status code is 200', async function() {
     // Make a fetch request to the app. Returns a Promise that resolves to a Response.
+    const response = await app.fetch('/');
+    assert.equal(response.status, 200);
+  });
+
+  it('Response headers include Content-Type: text/html', async function() {
+    const response = await app.fetch('/');
+    const contentTypeHeaders =
+      (response.headers.get('content-type') ?? '')
+      .split(',')
+      .map(value => value.trim().split(';')[0]);
+    assert.ok(contentTypeHeaders.includes('text/html'));
+  });
+
+  it('Response body contains <div>Index</div>', async function() {
     const response = await app.fetch('/');
     const text = await response.text();
     assert.ok(text.includes('<div>Index</div>'));
