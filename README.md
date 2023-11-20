@@ -34,13 +34,14 @@ npm install --save-dev @fastly/compute-testing
 
 #### Basic usage
 
-The following is a simple example. It uses the [Mocha](https://mochajs.org) test framework
-and [Node.js assertions](https://nodejs.org/api/assert.html), but note that any test framework
-or assertion library can be used.
+The following is a simple example. It uses Node.js's [test runner](https://nodejs.org/api/test.html) along with
+Node.js's [assertions](https://nodejs.org/api/assert.html), but note that any test framework or assertion library
+can be used.
 
-In your test, you can start and stop a Compute application:
+In your test (`./test.js`), you can start and stop a Compute application:
 
 ```javascript
+import { describe, it } from 'node:test';
 import assert from 'node:assert';
 import path from 'node:path';
 import url from 'node:url';
@@ -97,17 +98,23 @@ describe('Run local Viceroy', function() {
 });
 ```
 
+You would run this using Node.js in test mode:
+
+```
+node --test
+```
+
 #### Using a relative path for `appRoot`
 
-Often your Compute application will live at a subdirectory of the path that contains your test suite.
+Often your test suite will live in the same code repository as your Compute application.
 In this case, you may find it useful to specify a relative path.
 
-For example, if your test file is at `/tests/test.js` and your test application's root is at `/tests/app`,
-then you can specify the `appRoot` at the relative path of `./app` as so:
+For example, if your test file is at `<repo>/tests/test.js` and your test application's root is at `<repo>/app`,
+then you can specify the `appRoot` at the relative path of `../app` as so:
 ```javascript
     const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
     await app.start({
-      appRoot: path.join(__dirname, './app'),
+      appRoot: path.join(__dirname, '../app'),
     });
 ```
 
@@ -116,7 +123,7 @@ directory. So, if you're using Node.js 20.7 or newer you can use
 [import.meta.resolve](https://nodejs.org/api/esm.html#importmetaresolvespecifier):
 ```javascript
     await app.start({
-      appRoot: import.meta.resolve('./app/package.json'), // any file in the directory
+      appRoot: import.meta.resolve('../app/package.json'), // any file in the directory
     });
 ```
 
@@ -126,6 +133,7 @@ The following example is for a Compute application that is started using a
 custom startup command.
 
 ```javascript
+import { describe, it } from 'node:test';
 import assert from 'node:assert';
 import path from 'node:path';
 import url from 'node:url';
@@ -157,6 +165,7 @@ The following example is for a Fastly Compute application that is already runnin
 running on a remote host.
 
 ```javascript
+import { describe, it } from 'node:test';
 import assert from 'node:assert';
 import path from 'node:path';
 import url from 'node:url';
@@ -187,6 +196,7 @@ tools. The following example shows usage with [JSDOM](https://github.com/jsdom/j
 testing library for Node.js.
 
 ```javascript
+import { describe, it } from 'node:test';
 import assert from 'node:assert';
 import path from 'node:path';
 import url from 'node:url';
