@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+### Updates
+- fetch() can take Request or URL as its parameter in addition to string
+- Further updates to README 
+
 ## [0.1.1]
 
 ### Updates
