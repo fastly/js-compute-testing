@@ -195,13 +195,23 @@ export default class ComputeApplication {
   }
 
   public async fetch(
-    path: string,
+    input: URL | RequestInfo,
     init?: RequestInit | undefined,
   ): Promise<Response> {
     if (this.url == null) {
       throw new Error('ComputeApplication must be started before fetch()', { cause: this });
     }
-    const url = (new URL(path, this.url)).toString();
-    return await fetch(url, init);
+    let url: URL;
+    if (typeof input === 'string') {
+      url = new URL(input, this.url);
+    } else if (input instanceof Request) {
+      url = new URL(input.url);
+    } else {
+      url = input;
+    }
+    if (url.hostname !== this.url.hostname) {
+      throw new Error('fetch() must be made on same host as ComputeApplication', { cause: this });
+    }
+    return await fetch(input, init);
   }
 }
