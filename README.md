@@ -41,7 +41,7 @@ can be used.
 In your test (`./test.js`), you can start and stop a Compute application:
 
 ```javascript
-import { describe, it } from 'node:test';
+import { describe, it, before, after } from 'node:test';
 import assert from 'node:assert';
 import path from 'node:path';
 import url from 'node:url';
@@ -54,8 +54,6 @@ describe('Run local Viceroy', function() {
   const app = new ComputeApplication();
 
   before(async function() {
-    // We need a few seconds to wait for local development environment to start
-    this.timeout(30000);
     // Start the app
     await app.start({
       // Set 'appRoot' to the directory in which to start the app.  This is usually
@@ -89,8 +87,6 @@ describe('Run local Viceroy', function() {
   });
 
   after(async function() {
-    // We need a few seconds to wait for local development environment to stop
-    this.timeout(10000);
     // Shut down the app
     await app.shutdown();
   });
@@ -133,7 +129,7 @@ The following example is for a Compute application that is started using a
 custom startup command.
 
 ```javascript
-import { describe, it } from 'node:test';
+import { describe, it, before, after } from 'node:test';
 import assert from 'node:assert';
 import path from 'node:path';
 import url from 'node:url';
@@ -165,7 +161,7 @@ The following example is for a Fastly Compute application that is already runnin
 running on a remote host.
 
 ```javascript
-import { describe, it } from 'node:test';
+import { describe, it, before, after } from 'node:test';
 import assert from 'node:assert';
 import path from 'node:path';
 import url from 'node:url';
@@ -196,7 +192,7 @@ tools. The following example shows usage with [JSDOM](https://github.com/jsdom/j
 testing library for Node.js.
 
 ```javascript
-import { describe, it } from 'node:test';
+import { describe, it, before, after } from 'node:test';
 import assert from 'node:assert';
 import path from 'node:path';
 import url from 'node:url';
