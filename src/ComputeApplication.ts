@@ -204,6 +204,7 @@ export default class ComputeApplication {
     let url: URL;
     if (typeof input === 'string') {
       url = new URL(input, this.url);
+      input = url.toString();
     } else if (input instanceof Request) {
       url = new URL(input.url);
     } else {
