@@ -155,10 +155,10 @@ describe('Run custom app', function() {
 });
 ```
 
-#### Use an already-running or remote Compute application
+#### Use an running local or remote Compute application
 
-The following example is for a Fastly Compute application that is already running, or
-running on a remote host.
+In addition, rather than spawning an instance of an edge application, you can use this library to send requests to
+a Fastly Compute application that is already running on the local development environment, or running on a remote host.
 
 ```javascript
 import { describe, it, before, after } from 'node:test';
@@ -179,6 +179,8 @@ describe('Use running application', function() {
       addr: 'https://app.example.com/',
     });
   });
+  
+  // no shutdown, because you're not actually starting or shutting down an instance.
 
   // .. remaining tests
 

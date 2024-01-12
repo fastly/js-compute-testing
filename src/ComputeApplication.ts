@@ -32,12 +32,12 @@ export default class ComputeApplication {
 
     // Three modes:
 
-    // 1. startCommand - switch to appRoot if specified, and run the command. addr + port are used
+    // 1. startCommand - switch to appRoot if specified, and run the command. addr + port are not used
     // 2. appRoot only - switch to appRoot and run fastly compute serve. run fastly compute serve with addr + port
-    // 3. neither - connect to existing running c@e app. addr + port are used to connect to app. This can even be remote
+    // 3. neither - refer to a running Compute app. addr + port are used to refer to app. This can even be remote.
 
-    // 1 & 2 use a child process, we use child_process.spawn with shell: true and cwd set to appRoot, and that gets shut down when the current process dies.
-    // if the app dies first then we throw an error
+    // 1 & 2 use a child process, we use child_process.spawn with shell: true and cwd set to appRoot, and that gets shut
+    // down when the current process dies. If the app dies first then we throw an error
     // 3 doesn't attempt to shut anything down because we attach to a running instance.
 
     // 1 & 2 need to detect app having started
@@ -57,7 +57,7 @@ export default class ComputeApplication {
       const appRoot = startOptions.appRoot ?? './';
 
       // Calculate the effective "app root".
-      // appRoot is provided as  either the directory (absolute or relative to current working directory of the
+      // appRoot is provided as either the directory (absolute or relative to current working directory of the
       // current process) to set as the working directory when starting the development environment (the directory
       // in which to run startCommand), or the path to a file in that directory. It may be provided as a path or a
       // file url.
