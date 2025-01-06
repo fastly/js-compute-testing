@@ -1,6 +1,6 @@
 {
   "name": "@fastly/compute-testing",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "scripts": {
     "prepack": "npm run clean && npm run build",
     "build": "tsc --build tsconfig.json",
