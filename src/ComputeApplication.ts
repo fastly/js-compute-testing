@@ -96,7 +96,6 @@ export default class ComputeApplication {
       });
 
       spawnedProcess.stdout.on('data', (m: any) => {
-        // console.log(String(_m));
         const content = m instanceof Buffer ? m.toString('utf-8') : String(m);
         outputChunks.push({
           content,
