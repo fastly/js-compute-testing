@@ -5,6 +5,8 @@ import * as url from 'node:url';
 
 import treeKill from 'tree-kill';
 
+import fastlyCliPath from '@fastly/cli';
+
 export type ComputeApplicationStartOptions = {
   addr?: string;
 
@@ -52,7 +54,7 @@ export default class ComputeApplication {
     if (startOptions?.appRoot != null || startOptions?.startCommand != null) {
       const { hostname, port } = this.url;
 
-      const startCommand = startOptions.startCommand ?? `fastly compute serve --addr="${hostname}:${port}"`;
+      const startCommand = startOptions.startCommand ?? `${fastlyCliPath} compute serve --addr="${hostname}:${port}"`;
 
       const appRoot = startOptions.appRoot ?? './';
 

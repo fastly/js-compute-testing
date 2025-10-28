@@ -13,22 +13,22 @@ from your tests and make requests to it.
 
 Use with any test runner and framework.
 
+Note that `@fastly/compute-testing` makes no assumptions or dictates on the
+language used to build the Compute application. This framework simply
+starts/stops the application, and helps your code make HTTP requests to it.
+
 > NOTE: `@fastly/compute-testing` is provided as a Fastly Labs product. Visit the
 > [Fastly Labs](https://www.fastlylabs.com/) site for terms of use.
-
-### Requirements
-
-For local testing, [Fastly CLI](https://developer.fastly.com/learning/tools/cli) is required.
-
-Note that `@fastly/compute-testing` makes no assumptions or dictates on the language used to build the
-Compute application. This framework simply starts/stops the application, and helps your code make
-HTTP requests to it.
 
 ### Installation
 
 ```
 npm install --save-dev @fastly/compute-testing
 ```
+
+This package installs a copy of the [Fastly CLI](https://developer.fastly.com/learning/tools/cli)
+as an npm dependency.  Unless the [custom start script](#custom-start-script) feature
+is used, this installation of Fastly CLI is used to start the app being tested.
 
 ### Usage
 

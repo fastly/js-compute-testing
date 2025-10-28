@@ -7,10 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+### Updates
+- Use @fastly/cli as npm dependency
+
 ## [0.1.4] - 2025-01-06
 
 ### Added
-- 
 - Release to npmjs using CI workflow
 
 ## [0.1.3]

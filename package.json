@@ -9,6 +9,7 @@
   "main": "./build/src/index.js",
   "types": "./build/src/index.d.ts",
   "dependencies": {
+    "@fastly/cli": ">=10.14.0",
     "tree-kill": "^1.2.2"
   },
   "devDependencies": {
