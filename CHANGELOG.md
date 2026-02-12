@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+## [0.3.0] - 2026-02-12
+
 ### Updates
 - Release to npmjs using updated CI workflow and trusted publishing
 - Update rimraf (dev) to v6
@@ -47,7 +49,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
-[unreleased]: https://github.com/fastly/js-compute-testing/compare/v0.2.0...HEAD
+[unreleased]: https://github.com/fastly/js-compute-testing/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/fastly/js-compute-testing/compare/v0.1.4...v0.3.0
 [0.2.0]: https://github.com/fastly/js-compute-testing/compare/v0.1.4...v0.2.0
 [0.1.4]: https://github.com/fastly/js-compute-testing/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/fastly/js-compute-testing/compare/v0.1.2...v0.1.3
