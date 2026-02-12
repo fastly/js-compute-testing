@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Updates
 - Release to npmjs using updated CI workflow and trusted publishing
+- Update rimraf (dev) to v6
 
 ## [0.2.0] - 2025-10-28
 
